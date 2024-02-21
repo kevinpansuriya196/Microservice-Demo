@@ -3,6 +3,7 @@ package com.example.QuizService.controllers;
 import com.example.QuizService.entities.Quiz;
 import com.example.QuizService.services.QuizService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/quiz")
 public class QuizController {
-
+    @Autowired
     private QuizService quizService;
-
-    public QuizController(QuizService quizService) {
-        this.quizService = quizService;
-    }
 
     @PostMapping
     public Quiz create(@RequestBody Quiz quiz) {

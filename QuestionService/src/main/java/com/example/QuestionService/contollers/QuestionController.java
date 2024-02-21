@@ -2,7 +2,6 @@ package com.example.QuestionService.contollers;
 
 import com.example.QuestionService.entities.Question;
 import com.example.QuestionService.service.QuestionService;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
-
 
     private QuestionService questionService;
 
