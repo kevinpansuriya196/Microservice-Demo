@@ -7,6 +7,7 @@ import com.example.QuizService.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,21 +27,14 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Quiz> get() {
-//        return quizRepository.findAll();
-        List<Quiz> quizzes = quizRepository.findAll();
-
-        List<Quiz> newQuizList = quizzes.stream().map(quiz -> {
-            quiz.setQuestions(questionClient.getQuestionOfQuiz(quiz.getId()));
-            return quiz;
-        }).collect(Collectors.toList());
-        return newQuizList;
+        return quizRepository.findAll();
     }
 
     @Override
     public Quiz get(Long id) {
 
         Quiz quiz = quizRepository.findById(id).orElseThrow(() -> new RuntimeException("Quiz not found"));
-        quiz.setQuestions(questionClient.getQuestionOfQuiz(quiz.getId()));
+//        quiz.setQuestions(questionClient.getQuestionOfQuiz(quiz.getId()));
         return quiz;
     }
 }
